@@ -1,17 +1,34 @@
-node_modules
+# Dependencies
+node_modules/
+
+# Environment
 .env
+.env.local
+.env.*.local
 
-# Hardhat files
-/cache
-/artifacts
+# Hardhat
+artifacts/
+cache/
+typechain-types/
 
-# TypeChain files
-/typechain
-/typechain-types
+# Next.js
+.next/
+out/
 
-# solidity-coverage files
-/coverage
-/coverage.json
+# Build
+dist/
+build/
 
-# Hardhat Ignition default folder for deployments against a local node
-ignition/deployments/chain-31337
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Hallmark
+.hallmark/

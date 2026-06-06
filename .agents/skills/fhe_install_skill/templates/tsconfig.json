@@ -7,9 +7,7 @@
         "resolveJsonModule": true,
         "outDir": "dist",
         "moduleResolution": "node",
-        "skipLibCheck": true,
-        "rootDir": ".",
-        "ignoreDeprecations": "6.0"
+        "skipLibCheck": true
     },
     "include": [
         "./scripts",

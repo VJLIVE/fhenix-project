@@ -1,0 +1,16 @@
+{
+    "name": "fhenix-setup",
+    "version": "0.1.0",
+    "description": "Skill that scaffolds a Fhenix / CoFHE Hardhat TypeScript template, example contract, and deploy scripts.",
+    "author": "generated",
+    "files": [
+        "templates/package.json",
+        "templates/tsconfig.json",
+        "templates/hardhat.config.ts",
+        "templates/contracts/ConfidentialVault.sol",
+        "templates/scripts/deploy.ts",
+        "templates/.env.example",
+        "README.md",
+        "setup.ps1"
+    ]
+}

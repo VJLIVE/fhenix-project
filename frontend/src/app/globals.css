@@ -1,0 +1,164 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: var(--font-display), "Space Grotesk", sans-serif;
+  --font-body: var(--font-body), "Inter", sans-serif;
+  --font-mono: var(--font-mono), "JetBrains Mono", monospace;
+
+  --color-paper: oklch(98.5% 0.004 250);
+  --color-ink: oklch(24% 0.02 258);
+  --color-ink-muted: oklch(34% 0.018 257);
+  --color-accent: oklch(58% 0.20 256);
+  --color-accent-ink: #ffffff;
+  --color-graphite: oklch(22% 0.016 260);
+  --color-rule: oklch(92% 0.005 250);
+  --color-rule-dark: oklch(35% 0.02 258);
+
+  --radius-btn: 6px;
+  --radius-card: 10px;
+}
+
+@layer base {
+  html,
+  body {
+    overflow-x: clip;
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-weight: 400;
+  }
+}
+
+@layer utilities {
+  .text-display {
+    font-family: var(--font-display);
+  }
+
+  .text-mono {
+    font-family: var(--font-mono);
+  }
+
+  /* Reveal animation */
+  .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .reveal.is-in {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* Code card */
+  .code-card {
+    background: var(--color-graphite);
+    border: 1px solid var(--color-rule-dark);
+    border-radius: var(--radius-card);
+    box-shadow: 0 1px 2px oklch(24% 0.02 258 / 0.05);
+    font-family: var(--font-mono);
+    color: oklch(90% 0.01 260);
+  }
+
+  .code-card .tok-key,
+  .status--ok {
+    color: var(--color-accent);
+  }
+
+  .status--ok {
+    font-weight: 500;
+    font-size: 0.75rem;
+    line-height: 1;
+    font-family: var(--font-mono);
+    letter-spacing: 0.06em;
+  }
+
+  /* Nav */
+  .nav {
+    border-bottom: 1px solid var(--color-rule);
+    backdrop-filter: blur(8px);
+  }
+
+  /* Primary button */
+  .btn--primary {
+    background: var(--color-accent);
+    color: var(--color-accent-ink);
+    border-radius: var(--radius-btn);
+    transition: opacity 0.2s, transform 0.1s;
+    cursor: pointer;
+  }
+
+  .btn--primary:hover {
+    opacity: 0.9;
+  }
+
+  .btn--primary:active {
+    transform: translateY(1px);
+  }
+
+  .btn--primary:disabled {
+    cursor: not-allowed;
+  }
+
+  /* Encrypted value display */
+  .encrypted-value {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--color-accent);
+    background: oklch(58% 0.20 256 / 0.08);
+    border: 1px solid oklch(58% 0.20 256 / 0.15);
+    padding: 1px 6px;
+    border-radius: 3px;
+    letter-spacing: 0.02em;
+  }
+
+  /* Modal overlay */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 100;
+    background: oklch(24% 0.02 258 / 0.5);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.15s ease-out;
+  }
+
+  .modal-content {
+    background: var(--color-paper);
+    border: 1px solid var(--color-rule);
+    border-radius: var(--radius-card);
+    padding: 1.5rem;
+    box-shadow: 0 8px 32px oklch(24% 0.02 258 / 0.15);
+    animation: slideUp 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* Reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+
+    .modal-overlay,
+    .modal-content {
+      animation: none;
+    }
+
+    .btn--primary:active {
+      transform: none;
+    }
+  }
+}
